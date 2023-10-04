@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.0",
+    "axios": "^1.5.1",
     "mini-css-extract-plugin": "^2.7.6",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.3",
