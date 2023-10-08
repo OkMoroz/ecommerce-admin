@@ -20,6 +20,7 @@ function Categories({ swal }) {
 
   async function saveCategory(ev) {
     ev.preventDefault();
+
     const data = {
       name,
       parentCategory,
@@ -165,7 +166,7 @@ function Categories({ swal }) {
                 <button
                   onClick={() => removeProperty(index)}
                   type="button"
-                  className="btn-red"
+                  className="btn-red mb-2"
                 >
                   Remove
                 </button>
