@@ -17,6 +17,7 @@ function Categories({ swal }) {
       setCategories(result.data);
     });
   }
+
   async function saveCategory(ev) {
     ev.preventDefault();
     const data = {
@@ -51,7 +52,8 @@ function Categories({ swal }) {
     );
   }
   function deleteCategory(category) {
-    swal.fire({
+    swal
+      .fire({
         title: "Are you sure?",
         text: `Do you want to delete ${category.name}?`,
         showCancelButton: true,
@@ -68,18 +70,23 @@ function Categories({ swal }) {
         }
       });
   }
+
   function addProperty() {
     setProperties((prev) => {
       return [...prev, { name: "", values: "" }];
     });
   }
+
   function handlePropertyNameChange(index, property, newName) {
+    console.log({ index, property, newName });
+
     setProperties((prev) => {
       const properties = [...prev];
       properties[index].name = newName;
       return properties;
     });
   }
+  
   function handlePropertyValuesChange(index, property, newValues) {
     setProperties((prev) => {
       const properties = [...prev];
@@ -87,6 +94,7 @@ function Categories({ swal }) {
       return properties;
     });
   }
+
   function removeProperty(indexToRemove) {
     setProperties((prev) => {
       return [...prev].filter((p, pIndex) => {
@@ -94,6 +102,7 @@ function Categories({ swal }) {
       });
     });
   }
+
   return (
     <Layout>
       <h1>Categories</h1>
@@ -134,11 +143,11 @@ function Categories({ swal }) {
           </button>
           {properties.length > 0 &&
             properties.map((property, index) => (
-              <div key={property.name} className="flex gap-1 mb-2">
+              <div className="flex gap-1">
                 <input
                   type="text"
+                  className="mb-2"
                   value={property.name}
-                  className="mb-0"
                   onChange={(ev) =>
                     handlePropertyNameChange(index, property, ev.target.value)
                   }
@@ -146,7 +155,7 @@ function Categories({ swal }) {
                 />
                 <input
                   type="text"
-                  className="mb-0"
+                  className="mb-2"
                   onChange={(ev) =>
                     handlePropertyValuesChange(index, property, ev.target.value)
                   }

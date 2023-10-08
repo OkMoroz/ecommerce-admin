@@ -24,9 +24,9 @@ export default function ProductForm({
   const router = useRouter();
 
   useEffect(() => {
-    axios.get('/api/categories').then(result => {
+    axios.get("/api/categories").then((result) => {
       setCategories(result.data);
-    })
+    });
   }, []);
 
   async function saveProduct(ev) {
@@ -82,8 +82,7 @@ export default function ProductForm({
         onChange={(ev) => setTitle(ev.target.value)}
       />
       <label>Category</label>
-      <select value={category}
-      onChange={ev=>setCategory(ev.target.value)}>
+      <select value={category} onChange={(ev) => setCategory(ev.target.value)}>
         <option value="">Uncategorized</option>
         {categories.length > 0 &&
           categories.map((c) => (
