@@ -3,7 +3,6 @@ import Nav from "@/components/Nav";
 
 export default function Layout({children}) {
   const { data: session } = useSession();
-  console.log("session:", session);
 
   if (!session) {
     return (
