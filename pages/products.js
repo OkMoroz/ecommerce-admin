@@ -5,11 +5,13 @@ import axios from "axios";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     axios.get("/api/products").then((response) => {
       setProducts(response.data);
     });
   }, []);
+  
   return (
     <Layout>
       <Link className="btn-primary" href={"/products/new"}>

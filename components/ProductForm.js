@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { ReactSortable } from "react-sortablejs";
 import Spinner from "./Spinner";
-import { Category } from "@/models/Category";
 
 export default function ProductForm({
   _id,
@@ -116,18 +115,18 @@ export default function ProductForm({
       </select>
       {propertiesToFill.length > 0 &&
         propertiesToFill.map((p) => (
-          <div className="flex gap-1">
-            <div>{p.name}</div>
-            <select
-              value={productProperties[p.name]}
-              onChange={(ev) => setProductProp(p.name, ev.target.value)}
-            >
-              {p.values.map((v) => (
-                <option value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
+          <div className="">
+            <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
+            <div >
+              <select
+                value={productProperties[p.name]}
+                onChange={(ev) => setProductProp(p.name, ev.target.value)}
+              >
+                {p.values.map((v) => (
+                  <option value={v}>{v}</option>
+                ))}
+              </select>
+            </div>
           </div>
         ))}
       <label>Photos</label>
@@ -154,7 +153,7 @@ export default function ProductForm({
           </div>
         )}
 
-        <label className="w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-grey-500 rounded-sm shadow-sm bg-gray-200">
+        <label className="w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
