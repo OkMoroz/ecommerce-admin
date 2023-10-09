@@ -17,10 +17,8 @@ function Categories({ swal }) {
       setCategories(result.data);
     });
   }
-
   async function saveCategory(ev) {
     ev.preventDefault();
-
     const data = {
       name,
       parentCategory,
@@ -71,23 +69,18 @@ function Categories({ swal }) {
         }
       });
   }
-
   function addProperty() {
     setProperties((prev) => {
       return [...prev, { name: "", values: "" }];
     });
   }
-
   function handlePropertyNameChange(index, property, newName) {
-    console.log({ index, property, newName });
-
     setProperties((prev) => {
       const properties = [...prev];
       properties[index].name = newName;
       return properties;
     });
   }
-  
   function handlePropertyValuesChange(index, property, newValues) {
     setProperties((prev) => {
       const properties = [...prev];
@@ -95,7 +88,6 @@ function Categories({ swal }) {
       return properties;
     });
   }
-
   function removeProperty(indexToRemove) {
     setProperties((prev) => {
       return [...prev].filter((p, pIndex) => {
@@ -103,7 +95,6 @@ function Categories({ swal }) {
       });
     });
   }
-
   return (
     <Layout>
       <h1>Categories</h1>
@@ -127,7 +118,7 @@ function Categories({ swal }) {
             <option value="">No parent category</option>
             {categories.length > 0 &&
               categories.map((category) => (
-                <option key={category._id} value={category._id}>
+                <option value={category._id}>
                   {category.name}
                 </option>
               ))}
@@ -144,11 +135,11 @@ function Categories({ swal }) {
           </button>
           {properties.length > 0 &&
             properties.map((property, index) => (
-              <div className="flex gap-1">
+              <div className="flex gap-1 mb-2">
                 <input
                   type="text"
-                  className="mb-2"
                   value={property.name}
+                  className="mb-0"
                   onChange={(ev) =>
                     handlePropertyNameChange(index, property, ev.target.value)
                   }
@@ -156,7 +147,7 @@ function Categories({ swal }) {
                 />
                 <input
                   type="text"
-                  className="mb-2"
+                  className="mb-0"
                   onChange={(ev) =>
                     handlePropertyValuesChange(index, property, ev.target.value)
                   }
@@ -166,7 +157,7 @@ function Categories({ swal }) {
                 <button
                   onClick={() => removeProperty(index)}
                   type="button"
-                  className="btn-red mb-2"
+                  className="btn-red"
                 >
                   Remove
                 </button>
